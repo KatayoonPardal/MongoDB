@@ -1,15 +1,19 @@
 const express = require('express');
-const { connectToMongoDB, closeMongoDBConnection } = require('./db');
+const postsRouter = require('./routes/posts');
 
 const app = express();
 const port = 3000;
 
-// Middleware to parse JSON requests
 app.use(express.json());
 
-// Routes go here...
+// Use posts routes
+app.use('/posts', postsRouter);
 
-// Start the Express server
+// Add a simple route for the root path
+app.get('/', (req, res) => {
+  res.send('Hello, this is the root path!');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
