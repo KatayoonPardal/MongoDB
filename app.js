@@ -1,15 +1,14 @@
 // app.js
+
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const { connectToMongoDB, closeMongoDBConnection } = require('./db'); // Assuming db.js is in the same directory
 
-// Set up EJS as the view engine
 app.set('view engine', 'ejs');
-
-// Serve static assets from the public folder
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true })); // Middleware to parse form data
 
-// Define routes
 app.get('/', (req, res) => {
     res.render('welcome');
 });
@@ -18,17 +17,40 @@ app.get('/information-form', (req, res) => {
     res.render('information-form');
 });
 
-app.post('/submit-information', (req, res) => {
-    // Implement logic to handle form submissions and store data in MongoDB
-    // Use db.js to connect to MongoDB and perform database operations
-    res.redirect('/database-report'); // Redirect to the database report page after submission
+app.post('/submit-information', async (req, res) => {
+    const { name, email } = req.body;
+
+    try {
+        const db = await connectToMongoDB();
+        const collection = db.collection('userData'); // Replace 'userData' with your desired collection name
+
+        // Insert the submitted data into the MongoDB collection
+        await collection.insertOne({ name, email });
+
+        closeMongoDBConnection(); // Close the MongoDB connection
+
+        res.redirect('/database-report'); // Redirect to the database report page after submission
+    } catch (error) {
+        console.error('Error handling form submission:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-app.get('/database-report', (req, res) => {
-    res.render('database-report');
+app.get('/database-report', async (req, res) => {
+    try {
+        const db = await connectToMongoDB();
+        const collection = db.collection('userData'); // Replace 'userData' with your actual collection name
+
+        // Fetch data from MongoDB collection
+        const userData = await collection.find().toArray();
+
+        res.render('database-report', { userData });
+    } catch (error) {
+        console.error('Error fetching data from MongoDB:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
