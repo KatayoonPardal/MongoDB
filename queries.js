@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 // Connection URI
-const uri = 'mongodb+srv://abdolalianzahra:27zL4IWcwCHWW8Mo@cluster0.x5temxa.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://KatayoonPardal:katayoon1380@cluster0.tzfuooz.mongodb.net/?retryWrites=true&w=majority';
 
 // Create a new MongoClient
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -14,7 +14,7 @@ async function run() {
     console.log('Connected to the database');
 
     // Specify the database and collection
-    const database = client.db('p1');
+    const database = client.db('db-1');
     const collection = database.collection('posts');
 
     // Find all documents
