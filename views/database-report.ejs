@@ -6,10 +6,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Database Report</title>
-  <link rel="stylesheet" href="../public/styles/styles.scss">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-  <h1>Database Report</h1>
+  <div class="report-container">
+    <h1 class="report-h1">Database Report</h1>
+  
   
   <% if (userData && userData.length > 0) { %>
     <table>
@@ -27,6 +29,7 @@
   <% } else { %>
     <p>No data available.</p>
   <% } %>
+  </div>
 
   <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>

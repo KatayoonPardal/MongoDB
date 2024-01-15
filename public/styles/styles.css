@@ -1,0 +1,172 @@
+/* public/styles/style.scss */
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/* Updated styles for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; }
+
+th, td {
+  border: 1px solid #18114e;
+  padding: 15px; }
+
+th {
+  background-color: #6c5ce7;
+  color: white;
+  font-weight: bold;
+  text-align: center; }
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+  /* Alternate row color */ }
+
+tr:hover {
+  background-color: #e0e0e0;
+  /* Hover effect for rows */ }
+
+.report-container {
+  text-align: center; }
+
+.form_main {
+  width: 280px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  /* Updated background color */
+  padding: 30px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  /* Adjusted box shadow */
+  position: relative;
+  overflow: hidden;
+  margin-top: 150px;
+  border-radius: 10px;
+  /* Added border radius */ }
+
+.heading {
+  font-size: 1.8em;
+  /* Adjusted font size */
+  color: #2e2e2e;
+  font-weight: 700;
+  margin: 15px 0 30px 0; }
+
+.inputContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Adjusted flex direction */
+  align-items: flex-start;
+  /* Adjusted alignment */
+  z-index: 2;
+  font-size: 16px;
+  /* Adjusted font size */
+  margin-bottom: 15px;
+  /* Adjusted margin */ }
+
+.inputField {
+  width: 100%;
+  height: 40px;
+  /* Adjusted height */
+  background-color: #fff;
+  /* Set background color to white */
+  border: 1px solid #ddd;
+  /* Adjusted border color */
+  border-radius: 5px;
+  /* Added border radius */
+  margin: 10px 0;
+  color: #333;
+  /* Adjusted text color */
+  font-size: 1em;
+  /* Adjusted font size */
+  font-weight: 500;
+  box-sizing: border-box;
+  padding: 0 10px;
+  /* Adjusted padding */
+  transition: border-color 0.3s ease;
+  /* Added transition for better interaction */ }
+
+.inputField:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  /* Adjusted focus border color */ }
+
+.inputField::placeholder {
+  color: #999;
+  /* Adjusted placeholder color */ }
+
+#button {
+  z-index: 2;
+  width: 100%;
+  border: none;
+  background-color: #6c5ce7;
+  /* Adjusted button color */
+  height: 48px;
+  color: #fff;
+  font-size: 1em;
+  /* Adjusted font size */
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  /* Added border radius */
+  transition: background-color 0.3s ease;
+  /* Added transition for better interaction */ }
+
+#button:hover {
+  background-color: #5745a3;
+  /* Adjusted hover color */ }
+
+.welcome-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  text-align: center;
+  padding: 20px; }
+  .welcome-box h1 {
+    color: #2e2e2e;
+    font-size: 50px;
+    margin-bottom: 20px; }
+  .welcome-box p {
+    color: #4a4a4a;
+    font-size: 24px; }
+  .welcome-box a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    /* Added for positioning */
+    transition: color 0.3s ease;
+    /* Added for smooth transition */ }
+    .welcome-box a:hover {
+      text-decoration: none;
+      /* Remove default underline on hover */
+      color: #005aa5;
+      /* Change the link color on hover */ }
+    .welcome-box a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: #005aa5;
+      /* Underline color */
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      transition: width 0.3s ease;
+      /* Added for smooth transition */ }
+    .welcome-box a:hover::after {
+      width: 100%;
+      /* Expand the underline on hover */ }
